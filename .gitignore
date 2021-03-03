@@ -1,4 +1,5 @@
 .prettierrc
+.env
 
 # compiled output
 /dist
