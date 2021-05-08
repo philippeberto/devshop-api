@@ -19,7 +19,7 @@ import { async } from 'rxjs'
         url: configService.get('DATABASE_URL'),
         autoLoadEntities: true,
         synchronize: true, //não recomendável quando estiver em produção
-        //entities: [Category],
+        entities: [Category],
         logging: true
       })
     }),

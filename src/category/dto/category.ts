@@ -2,7 +2,7 @@ import { Field, ObjectType } from '@nestjs/graphql'
 
 @ObjectType('Category')
 export class CategoryPublic {
-  @Field({ nullable: true })
+  @Field()
   id: string
   @Field({ nullable: true })
   name: string

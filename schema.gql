@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Category {
-  id: String
+  id: String!
   name: String
   slug: String
 }
@@ -13,7 +13,8 @@ type Query {
 }
 
 type Mutation {
-  CreateCategory(input: CategoryCreateInput!): Category!
+  createCategory(input: CategoryCreateInput!): Category!
+  deleteCategory(id: String!): Boolean!
 }
 
 input CategoryCreateInput {
