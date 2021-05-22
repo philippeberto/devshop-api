@@ -38,7 +38,7 @@ export class ProductResolver {
     @Args('input') input: ProductUpdateInput
   ): Promise<ProductPublic> {
     return ProductMappper.fromEntityToPublic(
-      await this.productService.update(ProductMappper.toEntity(input))
+      await this.productService.update(ProductMappper.toEntityUpdate(input))
     )
   }
 
