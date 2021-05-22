@@ -26,3 +26,9 @@ import { GraphQLModule } from '@nestjs/graphql'
     })
   ],
 ```
+
+## Validations
+
+```
+$ npm install class-validator class-transformer
+```
