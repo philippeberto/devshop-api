@@ -6,7 +6,7 @@ import { CategoryModule } from './category/category.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Category } from './category/category.entity'
 import { ConfigModule, ConfigService } from '@nestjs/config'
-import { async } from 'rxjs'
+import { ProductModule } from './product/product.module'
 
 @Module({
   imports: [
@@ -34,9 +34,10 @@ import { async } from 'rxjs'
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql'
     }),
-    CategoryModule
+    CategoryModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [AppService]
 })
-export class AppModule {}
+export class AppModule { }
