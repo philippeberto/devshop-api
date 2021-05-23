@@ -29,12 +29,12 @@ export class ProductMappper {
   }
 
   public static fromEntityToPublic(entity: Product): ProductPublic {
-    const publicProduct = new ProductPublic()
-    publicProduct.id = entity.id
-    publicProduct.name = entity.name
-    publicProduct.slug = entity.slug
-    publicProduct.description = entity.description
-    publicProduct.category = entity.category.id
-    return publicProduct
+    const product = new ProductPublic()
+    product.id = entity.id
+    product.name = entity.name
+    product.slug = entity.slug
+    product.description = entity.description
+    product.category = entity.category.toString()
+    return product
   }
 }
