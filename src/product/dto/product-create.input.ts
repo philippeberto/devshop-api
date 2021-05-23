@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql'
-import { Length, Validate } from 'class-validator'
-import { CategoryIsSlugUnique } from 'src/category/validations/categoryIsSlugUnique'
+import { Length, Matches, Validate } from 'class-validator'
+import { ProductIsSlugUnique } from 'src/product/validations/productIsSlugUnique'
 
 @InputType()
 export class ProductCreateInput {
@@ -10,6 +10,8 @@ export class ProductCreateInput {
 
   @Field()
   @Length(3)
+  @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+  @Validate(ProductIsSlugUnique)
   slug: string
 
   @Field()
