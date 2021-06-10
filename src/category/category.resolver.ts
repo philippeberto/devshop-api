@@ -1,5 +1,4 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { Category } from './category.entity'
 import { CategoryMapper } from './category.mapper'
 import { CategoryService } from './category.service'
 import { CategoryPublic } from './dto/category'
