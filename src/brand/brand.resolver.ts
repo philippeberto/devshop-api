@@ -4,6 +4,8 @@ import { BrandService } from './brand.service'
 import { BrandPublic } from './dto/brand'
 import { BrandCreateInput } from './dto/brand-create.input'
 import { BrandUpdateInput } from './dto/brand-update.input'
+import { GraphQLUpload } from 'apollo-server-express'
+import { FileUpload } from 'graphql-upload'
 
 @Resolver(of => BrandPublic)
 export class BrandResolver {
@@ -26,6 +28,17 @@ export class BrandResolver {
     @Args('slug') slug: string
   ): Promise<BrandPublic> {
     return await this.brandService.findBySlug(slug)
+  }
+
+  @Mutation(returns => Boolean, { name: 'uploadBrandLogo' })
+  async uploadBrandLogo(
+    @Args('id') id: string,
+    @Args('file', { type: () => GraphQLUpload })
+    file: FileUpload
+  ): Promise<boolean> {
+    const { createReadStream, filename, mimetype } = await file
+    await this.brandService.uploadBrandLogo(id, createReadStream, filename, mimetype)
+    return true
   }
 
   @Mutation(returns => BrandPublic, { name: 'createBrand' })
