@@ -22,6 +22,18 @@ type Brand {
   slug: String
 }
 
+type User {
+  id: String!
+  name: String
+  email: String
+  role: String
+}
+
+type AuthToken {
+  refreshToken: String!
+  accessToken: String!
+}
+
 type Query {
   getAllCategories: [Category!]!
   getCategoryById(id: String!): Category!
@@ -32,6 +44,9 @@ type Query {
   getAllBrands: [Brand!]!
   getBrandById(id: String!): Brand!
   getBrandBySlug(slug: String!): Brand!
+  getAllUsers: [User!]!
+  getUserById(id: String!): User!
+  getUserByEmail(email: String!): User!
 }
 
 type Mutation {
@@ -45,6 +60,11 @@ type Mutation {
   updateBrand(input: BrandUpdateInput!): Brand!
   uploadBrandLogo(file: Upload!, id: String!): Boolean!
   deleteBrand(id: String!): Boolean!
+  createUser(input: UserCreateInput!): User!
+  updateUser(input: UserUpdateInput!): User!
+  deleteUser(id: String!): Boolean!
+  auth(input: AuthUserInput!): AuthToken!
+  accessToken(refreshToken: String!): String!
 }
 
 input CategoryCreateInput {
@@ -86,3 +106,23 @@ input BrandUpdateInput {
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
+
+input UserCreateInput {
+  name: String!
+  email: String!
+  passwd: String!
+  role: String!
+}
+
+input UserUpdateInput {
+  id: String!
+  name: String!
+  email: String!
+  role: String!
+  passwd: String!
+}
+
+input AuthUserInput {
+  email: String!
+  passwd: String!
+}

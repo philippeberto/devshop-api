@@ -8,6 +8,7 @@ import { Category } from './category/category.entity'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { ProductModule } from './product/product.module'
 import { BrandModule } from './brand/brand.module'
+import { UserModule } from './user/user.module'
 
 @Module({
   imports: [
@@ -37,7 +38,8 @@ import { BrandModule } from './brand/brand.module'
     }),
     CategoryModule,
     ProductModule,
-    BrandModule
+    BrandModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService]
